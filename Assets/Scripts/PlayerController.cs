@@ -2,15 +2,68 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int movementSpeed;
+    private Rigidbody2D rb;
+    private float inputHorizontal;
+    private Animator playerAnimator;
+    public float jumpForce;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        movePlayerLateral();
+        jump();
+    }
+
+    private void movePlayerLateral()
+    {
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(movementSpeed * inputHorizontal, rb.linearVelocityY);
+
+        if (inputHorizontal != 0)
+        {
+            playerAnimator.SetBool("isWalking", true);
+            flipPlayerSprite(inputHorizontal);
+        }
+        else
+        {
+            playerAnimator.SetBool("isWalking", false);
+        }
+    }
+
+    private void flipPlayerSprite(float ih)
+    {
+        if (ih > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (ih < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+    }
+
+    private void jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerAnimator.SetBool("isWalking", true);
+            playerAnimator.SetBool("isJumping", true);
+            rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            playerAnimator.SetBool("isJumping", false);
+        }
     }
 }
