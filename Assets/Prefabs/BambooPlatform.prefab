@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 958793673942427059}
   - component: {fileID: 8977677768840100156}
   - component: {fileID: 1197119112449457568}
-  m_Layer: 0
+  - component: {fileID: 7387832422355673553}
+  m_Layer: 6
   m_Name: BambooPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -203,3 +204,16 @@ PolygonCollider2D:
       - {x: -2.1227303, y: -0.23760867}
       - {x: -2.0980296, y: -0.23668778}
   m_UseDelaunayMesh: 1
+--- !u!114 &7387832422355673553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531736860514674301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb4ef6f5d972ee45a8e471eb208c58f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformDestroyer
+  lifetime: 5

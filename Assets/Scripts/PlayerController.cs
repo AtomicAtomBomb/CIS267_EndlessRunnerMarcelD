@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void movePlayerLateral()
     {
-        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputHorizontal = 1;
         rb.linearVelocity = new Vector2(movementSpeed * inputHorizontal, rb.linearVelocityY);
 
         if (inputHorizontal != 0)
