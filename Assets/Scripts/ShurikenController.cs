@@ -5,7 +5,8 @@ public class ShurikenController : MonoBehaviour
     public GameObject lowestYSpawn;
     public GameObject largestYSpawn;
     public GameObject Shuriken;
-    public Transform playerFollower;
+    public Transform lowestYPlayerFollower;
+    public Transform highestYPlayerFollower;
 
     private GameObject shurikenSpawner;
     private float time;
@@ -31,8 +32,8 @@ public class ShurikenController : MonoBehaviour
 
     private void followOnXOnly()
     {
-        lowestYSpawn.transform.position = new Vector3(playerFollower.position.x, lowestYSpawn.transform.position.y, lowestYSpawn.transform.position.z);
-        largestYSpawn.transform.position = new Vector3(playerFollower.position.x, largestYSpawn.transform.position.y, largestYSpawn.transform.position.z);
+        lowestYSpawn.transform.position = new Vector3(lowestYPlayerFollower.position.x, lowestYPlayerFollower.position.y, lowestYSpawn.transform.position.z);
+        largestYSpawn.transform.position = new Vector3(highestYPlayerFollower.position.x, highestYPlayerFollower.position.y, largestYSpawn.transform.position.z);
     }
 
     private void spawnShuriken()

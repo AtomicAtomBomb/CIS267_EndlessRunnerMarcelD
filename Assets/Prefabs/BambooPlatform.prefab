@@ -191,6 +191,8 @@ PolygonCollider2D:
       - {x: -2.3652365, y: 0.33062145}
       - {x: -2.724204, y: 0.32976052}
       - {x: -2.7294745, y: 0.32659203}
+      - {x: -3.3345811, y: -1.071196}
+      - {x: -2.8063521, y: -0.8352941}
       - {x: -2.73, y: -0.24499999}
       - {x: -2.7259405, y: -0.2407428}
       - {x: -2.4121783, y: -0.24232799}
@@ -216,4 +218,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb4ef6f5d972ee45a8e471eb208c58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlatformDestroyer
-  lifetime: 5

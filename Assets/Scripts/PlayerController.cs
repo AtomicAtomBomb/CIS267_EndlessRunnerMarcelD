@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         movePlayerLateral();
         jump();
+        fallDown();
     }
 
     private void movePlayerLateral()
@@ -64,6 +65,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void fallDown()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.gravityScale = 5;
+        }
+        else
+        {
+            rb.gravityScale = 2;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -83,6 +96,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Bomb"))
+        {
+            SceneManager.LoadScene("Level");
+        }
+
+        if (collision.gameObject.CompareTag("OB"))
         {
             SceneManager.LoadScene("Level");
         }
