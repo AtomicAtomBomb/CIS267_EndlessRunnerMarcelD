@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public int movementSpeed;
+    private int numJumps;
+    private int maxNumJumps = 2;
     private Rigidbody2D rb;
     private float inputHorizontal;
     private Animator playerAnimator;
     public float jumpForce;
+    public GameObject speedPowerup;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,11 +55,12 @@ public class PlayerController : MonoBehaviour
 
     private void jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && numJumps < maxNumJumps)
         {
             playerAnimator.SetBool("isWalking", true);
             playerAnimator.SetBool("isJumping", true);
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+            numJumps++;
         }
     }
 
@@ -64,6 +69,34 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             playerAnimator.SetBool("isJumping", false);
+            numJumps = 0;
+        }
+
+        if (collision.gameObject.CompareTag("Shuriken"))
+        {
+            SceneManager.LoadScene("Level");
+        }
+
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            SceneManager.LoadScene("Level");
+        }
+
+        if (collision.gameObject.CompareTag("Bomb"))
+        {
+            SceneManager.LoadScene("Level");
+        }
+
+        if (collision.gameObject.CompareTag("SpeedPowerup"))
+        {
+            movementSpeed = 15;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("BigJumpPowerup"))
+        {
+            jumpForce = 15;
+            Destroy(collision.gameObject);
         }
     }
 }

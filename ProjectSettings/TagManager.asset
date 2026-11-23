@@ -7,6 +7,12 @@ TagManager:
   - Ground
   - OB
   - Test
+  - Spike
+  - Shuriken
+  - BigJumpPowerup
+  - SpeedPowerup
+  - InvinciblePowerup
+  - Bomb
   layers:
   - Default
   - TransparentFX
